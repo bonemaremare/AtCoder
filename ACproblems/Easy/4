@@ -1,0 +1,9 @@
+import math
+N=int(input())
+
+n=math.ceil(N/1.08)
+
+if math.floor(n*1.08)==N:
+    print(n)
+else:
+    print(":(")

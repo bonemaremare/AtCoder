@@ -1,0 +1,11 @@
+N=int(input())
+X_list=list(map(int,input().split()))
+
+M=max(X_list)
+m=min(X_list)
+list_n=[]
+for x in range(m,M+1):
+    n=sum((xi-x)**2 for xi in X_list)
+    list_n.append(n)
+
+print(min(list_n))
