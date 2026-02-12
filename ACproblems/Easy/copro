@@ -1,0 +1,19 @@
+s=int(input())
+a_set=set()
+a_set.add(s)
+not_same=True
+n=s
+while not_same:
+    if n%2==0:
+        n//=2
+    else:
+        n=3*n+1
+
+    if n in a_set:
+        not_same=False
+    a_set.add(n)
+
+print(len(a_set)+1)
+
+
+

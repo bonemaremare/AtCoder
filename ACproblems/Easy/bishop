@@ -1,0 +1,7 @@
+H,W=map(int,input().split())
+import math
+
+if H!=1 and W!=1:
+    print(math.ceil((H*W)/2))
+else:
+    print(1)

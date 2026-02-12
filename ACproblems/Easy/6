@@ -1,0 +1,34 @@
+A=[]
+for _ in range(3):
+    A.append(list(map(int,input().split())))
+
+N= int(input())
+b=[]
+for _ in range(N):
+    b.append(int(input()))
+
+for n in b:
+    for i in range(3):
+        for j in range(3):
+            if A[i][j]==n:
+                A[i][j]=0
+
+if A[0]==[0,0,0]:
+    print("Yes")
+elif A[1]==[0,0,0]:
+    print("Yes")
+elif A[2]==[0,0,0]:
+    print("Yes")
+elif A[0][0]==A[1][1]==A[2][2]==0:
+    print("Yes")
+elif A[0][0]==A[1][0]==A[2][0]==0:
+    print("Yes")
+elif A[0][1]==A[1][1]==A[2][1]==0:
+    print("Yes")
+elif A[0][2]==A[1][2]==A[2][2]==0:
+    print("Yes")
+elif A[2][0]==A[1][1]==A[0][2]==0:
+    print("Yes")
+else:
+    print("No")
+    
