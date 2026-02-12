@@ -1,0 +1,35 @@
+N=int(input())
+t_list=[]
+x_list=[]
+y_list=[]
+
+for i in range(N):
+    t,x,y=map(int,input().split())
+    t_list.append(t)
+    x_list.append(x)
+    y_list.append(y)
+
+t,x,y=0,0,0
+can=True
+for i in range(N):
+    dt=t_list[i]-t
+    dx=abs(x_list[i]-x)
+    dy=abs(y_list[i]-y)
+    d=dt-dx-dy
+    if d<0:
+        can=False
+        break
+    elif d%2==1:
+        can=False
+        break
+    t=t_list[i]
+    x=x_list[i]
+    y=y_list[i]
+
+if can:
+    print("Yes")
+else:
+    print("No")
+
+
+    
