@@ -1,0 +1,15 @@
+N,K=map(int,input().split())
+h=list(map(int,input().split()))
+
+c=[0 for i in range(N)]
+c[0]=0
+
+for i in range(1,N):
+    start=max(0,i-K)
+    cost=[]
+    for j in range(start,i):
+        cost.append((abs(h[i]-h[j])+c[j]))
+    c[i]=min(cost)
+
+print(c[N-1])
+
