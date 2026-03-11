@@ -1,0 +1,46 @@
+N,M,T=map(int,input().split())
+A=list(map(int,input().split()))
+
+graph=[[] for _ in range(N+1)]
+re_graph=[[] for _ in range(N+1)]
+
+for i in range(M):
+    a,b,c=map(int,input().split())
+    graph[a].append((b,c))
+    re_graph[b].append((a,c))
+
+
+import heapq
+
+def dijkstra(start, num_nodes, graph):
+    """
+    start: 始点
+    num_nodes: 頂点数 (1-indexedなら N+1 を渡す)
+    graph: 隣接リスト graph[u] = [(v, weight), ...]
+    """
+    dist = [float('inf')] * num_nodes
+    dist[start] = 0
+    hq = [(0, start)]
+    
+    while hq:
+        current_dist, u = heapq.heappop(hq)
+        if current_dist > dist[u]:
+            continue
+        for v, weight in graph[u]:
+            if current_dist + weight < dist[v]:
+                dist[v] = current_dist + weight
+                heapq.heappush(hq, (dist[v], v))
+    return dist
+
+go_time=dijkstra(1,N+1,graph)
+back_time=dijkstra(1,N+1,re_graph)
+result=[]
+for i in range(1,N+1):
+    time=go_time[i]+back_time[i]
+    if time>T:
+        result.append(0)
+    else :
+        result.append((T-time)*A[i-1])
+
+
+print(max(result))

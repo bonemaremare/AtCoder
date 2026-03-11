@@ -30,5 +30,3 @@ while hq:
 
 print(cost[N])
 
-import heapq
-

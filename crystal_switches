@@ -1,0 +1,44 @@
+import heapq
+
+def dijkstra(start, num_nodes, graph):
+    """
+    start: 始点
+    num_nodes: 頂点数 (1-indexedなら N+1 を渡す)
+    graph: 隣接リスト graph[u] = [(v, weight), ...]
+    """
+    dist = [float('inf')] * num_nodes
+    dist[start] = 0
+    hq = [(0, start)]
+    
+    while hq:
+        current_dist, u = heapq.heappop(hq)
+        if current_dist > dist[u]:
+            continue
+        for v, weight in graph[u]:
+            if current_dist + weight < dist[v]:
+                dist[v] = current_dist + weight
+                heapq.heappush(hq, (dist[v], v))
+    return dist
+
+N,M,K=map(int,input().split())
+
+graph=[[] for i in range(2*N+1)]
+for i in range(M):
+    u,v,a=map(int,input().split())
+    if a==1:
+        graph[u].append((v,1))
+        graph[v].append((u,1))
+    elif a==0:
+        graph[u+N].append((v+N,1))
+        graph[v+N].append((u+N,1))
+s=list(map(int,input().split()))
+for i in range(K):
+    graph[s[i]].append((s[i]+N,0))
+    graph[s[i]+N].append((s[i],0))
+
+time=dijkstra(1,2*N+1,graph)
+result_time=min(time[N],time[2*N])
+if result_time==float('inf'):
+    print(-1)
+else:
+    print(result_time)
