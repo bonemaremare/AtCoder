@@ -1,0 +1,15 @@
+N,Q=map(int,input().split())
+A=list(map(int,input().split()))
+
+a=sorted((A[i],i+1) for i in range(N))
+
+for _ in range(Q):
+    k=int(input())
+    B=set(map(int,input().split()))
+
+    for i ,j in a:
+        if j not in B:
+            print(i)
+            break
+
+

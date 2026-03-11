@@ -1,0 +1,11 @@
+N,M=map(int,input().split())
+C=list(map(int,input().split()))
+
+result=0
+for i in range(N): 
+    a,b=map(int,input().split())
+    vol=min(b,C[a-1])
+    result+=vol
+    C[a-1]-=vol
+
+print(result)
