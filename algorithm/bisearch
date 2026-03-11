@@ -1,0 +1,16 @@
+import bisect
+N=int(input())
+A=list(map(int,input().split()))
+B=list(map(int,input().split()))
+C=list(map(int,input().split()))
+A.sort()
+C.sort()
+count=0
+for _ in range(N):
+    b=B[_]
+    a_num=bisect.bisect_left(A,b)
+    c_num=N-bisect.bisect_right(C,b)
+    count+=a_num*c_num
+
+print(count)
+    

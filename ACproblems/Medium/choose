@@ -1,0 +1,14 @@
+A,B,C=map(int,input().split())
+n=A%B
+can=False
+for i in range(B):
+    a=(n*(i+1))%B
+    if a==C:
+        print("YES")
+        can=True
+        break
+
+if not can:
+    print("NO")
+
+    

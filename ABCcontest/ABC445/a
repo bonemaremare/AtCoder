@@ -1,0 +1,9 @@
+S=str(input())
+a=S[0]
+N=S[::-1]
+b=N[0]
+
+if a==b:
+    print("Yes")
+else:
+    print("No")

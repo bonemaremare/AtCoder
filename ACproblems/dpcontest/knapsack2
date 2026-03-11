@@ -1,0 +1,25 @@
+N,W=map(int,input().split())
+w=[]
+v=[]
+for i in range(N):
+    wi,vi=map(int,input().split())
+    w.append(wi)
+    v.append(vi)
+
+dp=[[float('inf')]*100001 for i in range(N+1)]  #i番目まで見たときの価値vnowにする最小の重さ
+for i in range(N+1):
+    dp[i][0]=0
+for i in range(1,N+1):
+    for vnow in range(1,100001):
+        if vnow>=v[i-1]:
+            dp[i][vnow]=min(dp[i-1][vnow],dp[i-1][vnow-v[i-1]]+w[i-1])
+        
+        else:
+            dp[i][vnow]=dp[i-1][vnow]
+ans=0    
+for i in range(100001):
+    if dp[N][i]<=W:
+        ans=i
+
+print(ans)
+

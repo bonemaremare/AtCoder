@@ -1,0 +1,13 @@
+N=int(input())
+A=[x-1 for x in map(int,input().split())]
+
+dp=A[:]
+
+for _ in range(100):
+    next_dp=[0]*N
+    for i in range(N):
+        next_dp[i]=dp[dp[dp[dp[dp[dp[dp[dp[dp[dp[i]]]]]]]]]]
+    
+    dp=next_dp
+
+print(*[x+1 for x in dp])

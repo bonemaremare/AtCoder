@@ -1,0 +1,41 @@
+N=int(input())
+A_list=[x-1 for x in map(int,input().split())]
+
+result=[-1]*N
+visited=[False]*N
+
+k=10**100
+
+for i in range(N):
+    if visited[i]: 
+        continue
+    
+    path=[]
+    path_idx={}
+    curr=i
+
+    while curr not in path_idx and not visited[curr]:
+        path_idx[curr]=len(path)
+        path.append(curr)
+        curr=A_list[curr]
+    
+    if curr in path_idx:
+        syuuki_start=path_idx[curr]
+        dasoku=syuuki_start
+        syuuki=len(path)-dasoku
+    
+        for j,node in enumerate(path):
+            if j<dasoku:
+                rem_steps=k-(dasoku-j)
+                final_pos=syuuki_start+rem_steps%syuuki
+            else:
+                rem_steps=k
+                final_pos=syuuki_start+(j-dasoku+rem_steps)%syuuki
+        
+            result[node]=path[final_pos]+1
+            visited[node]=True
+
+print(*result)
+
+
+

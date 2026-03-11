@@ -1,0 +1,22 @@
+N=int(input())
+a=[]
+b=[]
+c=[]
+for i in range(N):
+    ai,bi,ci=map(int,input().split())
+    a.append(ai)
+    b.append(bi)
+    c.append(ci)
+
+ha=[a[0]] 
+hb=[b[0]]
+hc=[c[0]]
+
+if N>1:
+    for i in range(1,N):
+        ha.append(a[i]+max(hb[i-1],hc[i-1]))
+        hb.append(b[i]+max(ha[i-1],hc[i-1]))
+        hc.append(c[i]+max(hb[i-1],ha[i-1]))
+
+
+print(max(ha[N-1],hb[N-1],hc[N-1]))

@@ -1,0 +1,19 @@
+import heapq
+import sys
+
+input =sys.stdin.readline
+
+def solve():
+    N,M=map(int,input().split())
+
+    G= [[] for _ in range(N)]
+
+    for _ in range(M):
+        u,v,c=map(int,input().split())
+        
+        u-=1
+        v-=1
+        G[u].append((v,c))
+        G[v].append((u,c))
+
+

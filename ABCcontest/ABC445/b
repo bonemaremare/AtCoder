@@ -1,0 +1,14 @@
+N=int(input())
+S_list=[]
+len_list=[]
+for i in range(N):
+    tmp=str(input())
+    S_list.append(tmp)
+    len_list.append(len(tmp))
+
+n=max(len_list)
+
+for i in range(N):
+    c=(n-len_list[i])//2
+    print("."*c+S_list[i]+"."*c)
+

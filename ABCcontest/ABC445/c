@@ -1,0 +1,30 @@
+N=int(input())
+A=list(map(int,input().split()))
+
+result=[-1 for _ in range(N)]
+ans=[0 for _ in range(N)]
+for n in range(N):
+    if ans[n]==0:
+
+        root=[n]
+        now=n
+        for i in range(N):
+            next=A[now]-1
+            if next in root:
+                syuuki=i-root.index(next)+1
+                dasoku=len(root)-syuuki
+                break
+            root.append(next)
+            now=next
+    
+        last=(10**100-dasoku)%syuuki
+        for j in range(syuuki):
+            dasoku+j<syuuki
+            result[root[j]]=root[last+dasoku+j]+1
+            #else:
+               # result[root[j]]=root[last+dasoku+j-syuuki]+1
+            ans[j]=1
+        
+
+
+print(*result)

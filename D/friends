@@ -1,0 +1,38 @@
+class Unionfind:
+    def __init__(self,n):
+        self.parent_size=[-1]*n
+
+    def find(self,x):
+        if self.parent_size[x]<0:
+            return x
+        
+        self.parent_size[x]=self.find(self.parent_size[x])
+        return self.parent_size[x]
+    
+    def union(self,x,y):
+        root_x=self.find(x)
+        root_y=self.find(y)
+        if root_x==root_y:
+            return False
+        if self.parent_size[root_x]>self.parent_size[root_y]:
+            root_x,root_y=root_y,root_x
+        self.parent_size[root_x]+=self.parent_size[root_y]
+        self.parent_size[root_y]=root_x
+        return True
+    
+    def get_size(self,x):
+        return -self.parent_size[self.find(x)]
+    
+N,M=map(int,input().split())
+
+uf=Unionfind(N)
+
+for _ in range(M):
+    a,b=map(lambda x:int(x)-1,input().split())
+    uf.union(a,b)
+ans=0
+for i in range(N):
+    ans=max(ans,uf.get_size(i))
+
+print(ans)
+
