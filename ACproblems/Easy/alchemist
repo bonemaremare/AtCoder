@@ -1,0 +1,11 @@
+N=int(input())
+v=list(map(int,input().split()))
+
+v.sort(reverse=True)
+result=0
+for n in range(N-1):
+    result+=v[n]/(2**(n+1))
+
+result+=v[N-1]/(2**(N-1))
+
+print(result)
