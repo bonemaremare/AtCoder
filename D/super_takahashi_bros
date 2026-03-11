@@ -1,0 +1,26 @@
+N=int(input())
+A=[]
+B=[]
+X=[]
+for _ in range(N-1):
+    a,b,x=map(int,input().split())
+    A.append(a)
+    B.append(b)
+    X.append(x-1)
+
+cost=[float('inf')]*(N)
+cost[0]=0
+while cost[N-1]==float('inf'):
+    vir_cost=[float('inf')]*(N)
+    for i in range(N):
+        if cost[i]!=float('inf'):
+            vir_cost[i+1]=min(vir_cost[i+1],cost[i]+A[i])
+            vir_cost[X[i]]=min(vir_cost[X[i]],cost[i]+B[i])
+    min_cost=min(vir_cost)
+    for i in range(N):
+        if vir_cost[i]==min_cost:
+            cost[i]=min_cost
+
+
+print(cost[N-1])
+

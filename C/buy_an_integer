@@ -1,0 +1,22 @@
+A,B,X=map(int,input().split())
+
+def val(n):
+    return A*n+B*len(str(n))
+
+
+def cal(n,m):
+    if m-n==1:
+        return n
+    else:
+
+        mid=(n+m+1)//2
+        if val(mid)>X:
+            return cal(n,mid)
+        if val(mid)<=X:
+            return cal(mid,m)
+
+result=cal(0,X)
+if result>1000000000:
+    print(1000000000)
+else:
+    print(result)

@@ -1,0 +1,19 @@
+from collections import Counter
+
+S=input()
+counts=Counter(S)
+maxvalue=max(counts.values())
+
+max_letters={k for k, v in counts.items() if v==maxvalue}
+
+result=[]
+for char in S:
+    if char in  S:
+        if char not in max_letters:
+            result.append(char)
+        
+print("".join(result))
+print(counts)
+print(counts.values())
+print(counts.items())
+print(counts["a"])
