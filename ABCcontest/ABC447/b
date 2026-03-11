@@ -1,0 +1,17 @@
+S=input()
+dic={}
+for i in range(len(S)):
+    if S[i] not in dic:
+        dic[S[i]]=1
+    else:
+        dic[S[i]]+=1
+
+
+maxvalue=max(dic.values())
+maxletter=[k for k ,v in dic.items() if v==maxvalue]
+result=[]
+for i in range(len(S)):
+    if S[i] not in (maxletter):
+        result.append(S[i])
+    
+print("".join(map(str,result)))

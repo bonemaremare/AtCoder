@@ -1,0 +1,36 @@
+import bisect
+S =input()
+
+a_idx=[]
+b_idx=[]
+c_idx=[]
+
+for i in range(len(S)):
+    if S[i]=="A":
+        a_idx.append(i)
+    elif S[i]=="B":
+        b_idx.append(i)
+    elif S[i]=="C":
+        c_idx.append(i)
+
+result=0
+for i in range(len(a_idx)):
+    anow=a_idx[i]
+    bplace=bisect.bisect_right(b_idx,anow)
+    if bplace>=len(b_idx):
+        break
+    bnow=b_idx[bplace]
+    cplace=bisect.bisect_right(c_idx,bnow)
+    if cplace>=len(c_idx):
+        break
+    
+    bpop=b_idx.pop(bplace)
+    cpop=c_idx.pop(cplace)
+    result+=1
+    
+    
+print(result)
+
+
+
+

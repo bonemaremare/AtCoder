@@ -1,0 +1,40 @@
+S=input()
+T=input()
+s_a_list=[]
+s_list=[]
+t_a_list=[]
+t_list=[]
+
+
+count=0
+for i in range(len(S)):
+    if S[i]!="A":
+        s_a_list.append(count)
+        count=0
+        s_list.append(S[i])
+    else:
+        count+=1
+s_a_list.append(count)
+
+
+
+count=0
+for i in range(len(T)):
+    if T[i]!="A":
+        t_a_list.append(count)
+        count=0
+        t_list.append(T[i])
+    else:
+        count+=1
+t_a_list.append(count)
+
+
+if s_list!=t_list:
+    print(-1)
+else:
+    result=0
+    for i in range(len(s_a_list)):
+        result+=abs(s_a_list[i]-t_a_list[i])
+
+    print(result)
+
