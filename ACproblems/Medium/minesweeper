@@ -1,0 +1,24 @@
+H,W=map(int,input().split())
+s_list=[]
+s_list.append([0]*(W+2))
+for i in range(H):
+    row=list(input())
+    s_list.append([0]+row+[0])
+s_list.append([0]*(W+2))
+
+result=[[0]*W for _ in range(H)]
+
+for i in range(H):
+    for j in range(W):
+        if s_list[i+1][j+1]=="#":
+            result[i][j]="#"
+        else :
+            count=0
+            for n in range(3):
+                for m in range(3):
+                    if s_list[i+n][j+m]=="#":
+                        count+=1
+            result[i][j]=count
+    
+for row in result:
+    print(*row, sep="")

@@ -1,0 +1,13 @@
+N=int(input())
+a_list=list(int(input()) for i in range(N))
+b=1
+can=False
+for i in range(N):
+    b=a_list[b-1]
+    if b==2 :
+        can=True
+        print(i+1)
+        break
+
+if not can:
+    print(-1)

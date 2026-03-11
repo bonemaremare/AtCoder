@@ -1,0 +1,34 @@
+N=str(input())
+A=int(N[0])
+B=int(N[1])
+C=int(N[2])
+D=int(N[3])
+
+for i in range(8):
+    result=A
+    n=i
+    b=format(n,'03b')
+    if b[0]=="0":
+        o1="+"
+        result+=B
+    else:
+        result-=B
+        o1="-"
+    if b[1]=="0":
+        result+=C
+        o2="+"
+    else:
+        result-=C
+        o2="-"
+    
+    if b[2]=="0":
+        result+=D
+        o3="+"
+    else:
+        result-=D
+        o3="-"
+    
+    if result==7:
+        break
+
+print(f"{A}{o1}{B}{o2}{C}{o3}{D}=7")
