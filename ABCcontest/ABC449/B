@@ -1,0 +1,22 @@
+H,W,Q=map(int,input().split())
+for _ in range(Q):
+    q,n=map(int,input().split())
+    if q==2:
+        print(H*(n))
+        W-=int(n)
+    
+    else:
+        print(W*(n))
+        H-=int(n)
+
+
+
+
+    
+
+
+
+
+
+
+
