@@ -34,7 +34,7 @@ vector<ll> dijkstra(int N, int s, const vector<vector<Edge>> &G)
         auto [d, v] = pq.top();
         pq.pop();
 
-        if (dist[v] < d)
+                if (dist[v] < d)
             continue;
 
         for (const auto &e : G[v])
